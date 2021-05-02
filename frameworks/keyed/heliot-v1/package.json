@@ -1,0 +1,13 @@
+{
+  "name": "heliot-v1-js-benchmark",
+  "version": "1.0.0",
+  "js-framework-benchmark": {
+    "frameworkVersion": "0.0.1"
+  },
+  "scripts": {
+    "build-prod": "esbuild --jsx-factory=h --jsx-fragment=Fragment --bundle --minify index.jsx > index.js"
+  },
+  "dependencies": {
+    "esbuild": "^0.11.7"
+  }
+}
