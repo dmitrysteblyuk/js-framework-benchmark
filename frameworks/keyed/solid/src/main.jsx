@@ -11,10 +11,9 @@ function _random (max) { return Math.round(Math.random() * 1000) % max; };
 function buildData(count) {
   let data = new Array(count);
   for (let i = 0; i < count; i++) {
-    const [label, setLabel] = createSignal(`${adjectives[_random(adjectives.length)]} ${colours[_random(colours.length)]} ${nouns[_random(nouns.length)]}`);
     data[i] = {
       id: idCounter++,
-      label, setLabel
+      label: `${adjectives[_random(adjectives.length)]} ${colours[_random(colours.length)]} ${nouns[_random(nouns.length)]}`
     }
   }
   return data;
@@ -47,7 +46,7 @@ const App = () => {
         let rowId = row.id;
         return <tr class={isSelected(rowId) ? "danger": ""}>
           <td class='col-md-1' textContent={ rowId } />
-          <td class='col-md-4'><a onClick={[setSelected, rowId]} textContent={ row.label() } /></td>
+          <td class='col-md-4'><a onClick={[setSelected, rowId]} textContent={ row.label } /></td>
           <td class='col-md-1'><a onClick={[remove, rowId]}><span class='glyphicon glyphicon-remove' aria-hidden="true" /></a></td>
           <td class='col-md-6'/>
         </tr>
@@ -79,14 +78,13 @@ const App = () => {
   function add() { setData(data().concat(buildData(1000))); }
 
   function update() {
-    batch(() => {
-      const d = data();
-      let index = 0;
-      while (index < d.length) {
-        d[index].setLabel(d[index].label() + ' !!!');
-        index += 10;
-      }
-    });
+    const d = data().slice();
+    let index = 0;
+    while (index < d.length) {
+      d[index] = {...d[index], label: d[index].label + ' !!!'};
+      index += 10;
+    }
+    setData(d);
   }
 
   function swapRows() {

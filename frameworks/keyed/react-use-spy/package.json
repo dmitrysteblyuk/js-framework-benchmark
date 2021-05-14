@@ -1,0 +1,28 @@
+{
+  "name": "js-framework-benchmark-react-use-spy",
+  "version": "1.0.0",
+  "description": "React demo",
+  "js-framework-benchmark": {
+    "frameworkVersionFromPackage": "react:react-use-spy"
+  },
+  "scripts": {
+    "build-prod": "esbuild --outfile=dist/main.js --bundle --minify src/main.jsx"
+  },
+  "keywords": [
+    "react"
+  ],
+  "author": "Stefan Krause",
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/krausest/js-framework-benchmark",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/krausest/js-framework-benchmark.git"
+  },
+  "dependencies": {
+    "react": "17.0.1",
+    "react-dom": "17.0.1"
+  },
+  "devDependencies": {
+    "esbuild": "^0.11.21"
+  }
+}
